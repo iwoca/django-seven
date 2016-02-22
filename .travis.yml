@@ -1,0 +1,31 @@
+language: python
+
+python:
+  - 2.7
+  - 3.4
+
+env:
+  - TOXENV=django14
+  - TOXENV=django15
+  - TOXENV=django16
+  - TOXENV=django17
+  - TOXENV=django18
+
+matrix:
+  exclude:
+    - python: 3.4
+      env: TOXENV=django14
+
+script:
+  - tox
+
+install:
+  - pip install tox
+  - pip install -e .
+
+deploy:
+  provider: pypi
+  user: iwoca
+  on:
+    tags: true
+    all_branches: true
