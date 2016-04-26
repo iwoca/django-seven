@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.test import TransactionTestCase
 
-from upgrade_tools.db import transaction
+from seven.db import transaction
 
 
 class AtomicTransactionTest(TransactionTestCase):

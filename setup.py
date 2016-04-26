@@ -9,14 +9,14 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='django-upgrade-tools',
+    name='django-seven',
     version='0.1',
-    packages=['upgrade_tools'],
+    packages=['seven'],
     include_package_data=True,
     license='BSD License',
     description='A Django app to help for Django upgrades.',
     long_description=README,
-    url='http://github.com/iwoca/django-upgrade-tools/',
+    url='http://github.com/iwoca/seven/',
     author='iwoca ltd',
     classifiers=[
         'Environment :: Web Environment',
