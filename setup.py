@@ -16,7 +16,7 @@ setup(
     license='BSD License',
     description='A Django app to help for Django upgrades.',
     long_description=README,
-    url='http://github.com/iwoca/seven/',
+    url='http://github.com/iwoca/django-seven/',
     author='iwoca ltd',
     classifiers=[
         'Environment :: Web Environment',
