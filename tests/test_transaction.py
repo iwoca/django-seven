@@ -1,7 +1,6 @@
 from django.contrib.auth.models import User
 from django.test import TransactionTestCase
-
-from seven.db import transaction
+from seven.compat.db import transaction
 
 
 class AtomicTransactionTest(TransactionTestCase):
@@ -26,20 +25,3 @@ class AtomicTransactionTest(TransactionTestCase):
                 raise Exception("Rollback should happen")
 
         self.assertQuerysetEqual(User.objects.all(), [])
-
-
-class CustomerManagedTransactionTest(TransactionTestCase):
-
-    def test_that_managed_transaction_does_not_swallow_exceptions_if_code_error(self):
-        """
-        It's quite surprising, as commit_on_success usually raises the Exception.
-        It seems that, in some situations, the rollback was done without any Exception raised.
-        This managed_transaction is more a gatekeeper, and will disappear with new atomic transaction management.
-        """
-        @transaction.managed_transaction
-        def create_user():
-            User.objects.create_user('johndoe')
-            raise Exception("Rollback should happen")
-
-        with self.assertRaises(Exception):
-            create_user()
