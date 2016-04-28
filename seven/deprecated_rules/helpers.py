@@ -52,25 +52,3 @@ def validate_file(file_name, dir_name, aggregated_regex_compiled, regex_rules):
                         errors = True
 
     return errors
-
-
-if __name__ == '__main__':
-    print('Checking deprecated rules...\n')
-    errors = 0
-    regex_rules = compile_regex(rules.REGEX_RULES)
-    aggregated_regex_compiled = aggregated_regex(regex_rules)
-
-    for rule in sorted(rules.REGEX_RULES.iteritems(), key=lambda x: x[1]['number']):
-        print('{number}: {message}'.format(number=rule[1]['number'], message=rule[1]['message']))
-
-    for dirName, subdirList, fileList in os.walk('.'):
-        if not is_excluded_dir(dirName):
-            for fname in [f for f in fileList if not is_excluded_file(f, dirName)]:
-                errors |= int(validate_file(fname, dirName, aggregated_regex_compiled, regex_rules))
-
-    if errors:
-        print('\nHave a look at http://django-seven.readthedocs.org/en/develop/deprecated-rules for more informations about these errors.\n')
-    else:
-        print('\nDeprecated rules respected. Good job \o/\n')
-
-    exit(errors)

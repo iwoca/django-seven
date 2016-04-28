@@ -1,12 +1,11 @@
 from __future__ import absolute_import
-import json
-from optparse import make_option
 import os
-import pprint
 
 from django.core.management.base import BaseCommand
-from django.conf import settings
-from seven.deprecated_rules.launch_check import compile_regex
+
+from seven.deprecated_rules import rules
+from seven.deprecated_rules.helpers import aggregated_regex, is_excluded_dir, validate_file, is_excluded_file, \
+    compile_regex
 
 
 class Command(BaseCommand):
