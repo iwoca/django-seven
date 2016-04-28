@@ -69,7 +69,7 @@ if __name__ == '__main__':
                 errors |= int(validate_file(fname, dirName, aggregated_regex_compiled, regex_rules))
 
     if errors:
-        print('\nHave a look at http://django-upgrade-tools.readthedocs.org/en/develop/deprecated-rules for more informations about these errors.\n')
+        print('\nHave a look at http://django-seven.readthedocs.org/en/develop/deprecated-rules for more informations about these errors.\n')
     else:
         print('\nDeprecated rules respected. Good job \o/\n')
 
