@@ -15,7 +15,7 @@ DATABASES = {
 }
 
 INSTALLED_APPS = (
-    'django_seven', 'tests', )
+    'django_seven.deprecated_rules', 'tests', )
 
 
 # Using DiscoverRunner before Django 1.6 to be able to use test files with 'test*' pattern name

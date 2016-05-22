@@ -3,8 +3,8 @@ import os
 
 from django.core.management.base import BaseCommand
 
-from seven.deprecated_rules import rules
-from seven.deprecated_rules.helpers import aggregated_regex, is_excluded_dir, validate_file, is_excluded_file, \
+from django_seven.deprecated_rules import rules
+from django_seven.deprecated_rules.helpers import aggregated_regex, is_excluded_dir, validate_file, is_excluded_file, \
     compile_regex
 
 
@@ -35,5 +35,3 @@ class Command(BaseCommand):
             print('\nHave a look at http://django-seven.readthedocs.org/en/develop/deprecated-rules for more informations about these errors.\n')
         else:
             print('\nDeprecated rules respected. Good job \o/\n')
-
-        return errors
