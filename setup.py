@@ -1,6 +1,6 @@
 
 import os
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
     README = readme.read()
@@ -9,9 +9,9 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='django-seven',
+    name='django_seven',
     version='0.1',
-    packages=['seven'],
+    packages=['django_seven', 'django_seven.compat', 'django_seven.deprecated_rules', 'django_seven.tools'],
     include_package_data=True,
     license='BSD License',
     description='A Django app to help for Django upgrades.',

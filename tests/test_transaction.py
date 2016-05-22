@@ -1,7 +1,7 @@
 
 from django.test import TransactionTestCase
 
-from seven.compat.db import transaction
+from django_seven.compat.db import transaction
 from tests.models import SuperHero
 
 

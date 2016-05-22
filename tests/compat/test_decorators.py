@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.test.utils import override_settings
-from seven.compat.decorators import available_on
+from django_seven.compat.decorators import available_on
 
 
 @available_on('1.4', '1.8')
