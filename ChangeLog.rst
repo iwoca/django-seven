@@ -9,4 +9,4 @@ ChangeLog
 
 *New:*
 
-    - Adding compatibility tools to help developer to migrate from Django 1.4 to 1.8.
+    - Adding compatibility tools to help developer to upgrade their Django version.
