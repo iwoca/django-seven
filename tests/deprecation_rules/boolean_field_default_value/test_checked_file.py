@@ -7,7 +7,7 @@ import re
 RULES = [{
         'name': 'boolean_default',
         'message': 'BooleanField message',
-        'regex': r'.*models\.BooleanField(?!(\(.*(default=)+.*\))).*',
+        'regex': r'models\.BooleanField(?!(\(.*(default=)+.*\)))',
         'number': '1601',
         'old_django_version': '1.5',
         'new_django_version': '1.6'
@@ -16,7 +16,7 @@ RULES = [{
 
 def validating_regex(regex, line):
     pattern = re.compile(regex)
-    return pattern.match(line) is not None
+    return pattern.search(line) is not None
 
 
 def validate_file(filename, regex_rules):
