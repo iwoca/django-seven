@@ -1,8 +1,8 @@
-import collections
 import os
 
 from django.test import TestCase
-import re
+from django_seven.deprecated_rules.new_helpers import validate_file
+
 
 RULES = [{
         'name': 'boolean_default',
@@ -12,23 +12,6 @@ RULES = [{
         'old_django_version': '1.5',
         'new_django_version': '1.6'
 }]
-
-
-def validating_regex(regex, line):
-    pattern = re.compile(regex)
-    return pattern.search(line) is not None
-
-
-def validate_file(filename, regex_rules):
-
-    report = collections.defaultdict(lambda: collections.defaultdict(list))
-
-    with open(filename) as f:
-        for i, line in enumerate(f):
-            for rule in regex_rules:
-                if validating_regex(rule['regex'], line):
-                    report[rule['name']]['lines'].append(i+1)
-    return report
 
 
 class TestBooleanFieldDefaultRule(TestCase):
