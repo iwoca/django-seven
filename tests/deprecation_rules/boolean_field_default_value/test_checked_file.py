@@ -4,14 +4,14 @@ from django.test import TestCase
 from django_seven.deprecated_rules.new_helpers import validate_file
 
 
-RULES = [{
+RULES = [
+    {
         'name': 'boolean_default',
         'message': 'BooleanField message',
         'regex': r'models\.BooleanField(?!(\(.*(default=)+.*\)))',
         'number': '1601',
-        'old_django_version': '1.5',
-        'new_django_version': '1.6'
-}]
+    }
+]
 
 
 class TestBooleanFieldDefaultRule(TestCase):
@@ -28,7 +28,12 @@ class TestBooleanFieldDefaultRule(TestCase):
             {
                 'deprecated': {
                     'boolean_default': {
-                        'lines': [5]
+                        'lines': [
+                            {
+                                'content': '    bad_boolean_field = models.BooleanField()\n',
+                                'number': 5
+                            }
+                        ]
                     }
                 }
             })
