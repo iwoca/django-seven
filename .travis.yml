@@ -1,31 +1,27 @@
 language: python
-
 python:
-  - 2.7
-  - 3.4
-
+- 2.7
+- 3.4
 env:
-  - TOXENV=django14
-  - TOXENV=django15
-  - TOXENV=django16
-  - TOXENV=django17
-  - TOXENV=django18
-
+- TOXENV=django14
+- TOXENV=django15
+- TOXENV=django16
+- TOXENV=django17
+- TOXENV=django18
 matrix:
   exclude:
-    - python: 3.4
-      env: TOXENV=django14
-
+  - python: 3.4
+    env: TOXENV=django14
 script:
-  - tox
-
+- tox
 install:
-  - pip install tox
-  - pip install -e .
-
+- pip install tox
+- pip install -e .
 deploy:
   provider: pypi
   user: iwoca
   on:
     tags: true
     all_branches: true
+  password:
+    secure: Td+gJRrh9UOSA4DBnANb2R6g6c1e4nJR2ZcrYb88MZmmt6lZz1mHRDGF23jJxJly8CGEO8zpQ7smWnn+Lh//c2GgAeX7kzPITbCdjlAsI1IHYgF5zLy9ZQvmjd/+QicTdI7LsyK7XrOzFc7lXwRT4XPxP+R4VKBYw1dV269c3/SOLHZbcPSuthRsmGTO88vq3ZFjLeYfdfIQLnIPwmZZTb1UVXk/Y/W6H1ILz8ojOmMIupvOq/QuOfUuA3kiG4zKHtWVdgH7nDhxxrAJ8LH9VbsewXpJAHJCfKl9jnvexzPvplpPCSygrKsY3G/6KC3gbDvx123GOcm1cYzjupj5gsl221P/rDBJvy7i2oPgxCANagZQrLyU2KglyV2NFh+8HvbeEBmW7I10fVnMyYRZsrPogg2JQ8iVcwJ+I6AGnfY6qw1Ww8sJoLN+lItTbNUuSmYNfFTicK54YfXc9SEy8Jt3/h5PA0B9IsgJSsaYmd35dmcnlj3Mperz88KRFa3pxt9SzSH9XQ7XN7DKB4kqcyEsA0Qguf1Eafj+RNyL5AB5pWXmghN/jCHHfBYwldosFg2/f++1/LMBfKYGOF7fX0mjkmMA42LhGEyOPXk5DeSNN0QEpVJhWuJ4OosqRzp+4ZprV/WMfCG/p5VzQxM6/GikhpODuCRgTJyc8qnHO5E=
