@@ -34,7 +34,8 @@ class Command(BaseCommand):
         for dirName, subdirList, fileList in os.walk('.'):
             if not is_excluded_dir(dirName):
                 for fname in [f for f in fileList if not is_excluded_file(f, dirName)]:
-                    file_report = validate_file(os.path.join(dirName, fname), regex_rules, progress_fn)
+                    dir_name_last_path = os.path.basename(os.path.normpath(dirName))
+                    file_report = validate_file(os.path.join(dir_name_last_path, fname), regex_rules, progress_fn)
                     report.update(file_report)
 
         if len(report) > 0:

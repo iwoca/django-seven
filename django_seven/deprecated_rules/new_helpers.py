@@ -1,5 +1,4 @@
-import os
-import re
+
 from collections import defaultdict
 
 
@@ -16,11 +15,13 @@ def parse_file(filename, regex_rules):
                     yield (rule, line, i+1)
 
 
-def validate_file(filename, regex_rules, parse_progress=None):
+def validate_file(filename, regex_rules, parse_progress=None, project_root=None):
 
     report = defaultdict(lambda: defaultdict(list))
     for rule, line, number in parse_file(filename, regex_rules):
         if parse_progress:
             parse_progress(filename, rule, line, number)
+        if project_root:
+            filename = filename.replace(project_root, '')
         report[rule['name']]['lines'].append({'content': line, 'number': number, 'filename': filename})
     return report
