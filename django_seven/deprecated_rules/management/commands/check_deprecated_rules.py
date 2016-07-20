@@ -11,12 +11,20 @@ from django_seven.deprecated_rules.new_helpers import validate_file
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        """ The idea is to freeze the migrations I have already processed in the new-style migration.
-            If people are pushing new migrations, I will know, after saving what I already have managed,
-            which ones I need to update.
+        """
+        This management command applies all deprecated rules defined in rules module.
+        Every non-respected rule will have a report displayed with some explanations to fix it:
+        - The impacted file,
+        - The rule number, with a human description
+        - The line number, and the line copy.
 
-            If the command is launched without arguments, I get the diff between actual migrations and the frozen ones
-            With --save parameters, we save current migrations in the filesystem in a json file.
+        $ ./manage.py check_deprecated_rules
+
+        ./core/models.py
+        1601: models.BooleanField has to be initialised with default parameter,
+              as implicit default has changed between Django 1.4 (False) and 1.6 (None).
+        L6:     boolean_field = models.BooleanField()
+
         """
         print('Check deprecated rules...\n')
         regex_rules = compile_regex(rules.REGEX_RULES)
@@ -34,8 +42,7 @@ class Command(BaseCommand):
         for dirName, subdirList, fileList in os.walk('.'):
             if not is_excluded_dir(dirName):
                 for fname in [f for f in fileList if not is_excluded_file(f, dirName)]:
-                    dir_name_last_path = os.path.basename(os.path.normpath(dirName))
-                    file_report = validate_file(os.path.join(dir_name_last_path, fname), regex_rules, progress_fn)
+                    file_report = validate_file(os.path.join(dirName, fname), regex_rules, progress_fn)
                     report.update(file_report)
 
         if len(report) > 0:
