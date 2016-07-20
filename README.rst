@@ -42,6 +42,7 @@ Then launch the management command for your project:
 
 
 This command will give you a list of non-respected rules, with useful informations to fix them:
+
 - The impacted file,
 - The rule number, with an explanation of the rule,
 - The line number, and the line copy.
