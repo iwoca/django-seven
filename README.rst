@@ -17,7 +17,8 @@ Deprecated rules
 ================
 
 A Django management command  ``check_deprecated_rules`` is available to check if your project is "upgrade-compatible".
-You should first add ``django_seven.deprecated_rules`` tou your ``INSTALLED_APPS``:
+
+You should first add ``django_seven.deprecated_rules`` to your ``INSTALLED_APPS``:
 
 
 ::
