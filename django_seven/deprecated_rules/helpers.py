@@ -26,15 +26,10 @@ def is_excluded_file(file_name, dir_name):
 
 
 def compile_regex(regex_rules):
-    for rule in regex_rules.values():
+    for rule in regex_rules:
         rule['compiled_regex'] = re.compile(rule['regex'])
 
     return regex_rules
-
-
-def aggregated_regex(regex_rules):
-    aggregated = '|'.join(['(' + rule['regex'] + ')' for rule in regex_rules.values()])
-    return re.compile(aggregated)
 
 
 def validate_file(file_name, dir_name, aggregated_regex_compiled, regex_rules):
