@@ -70,7 +70,7 @@ You should respect the rule fields:
         },
     ]
 
-You can also define yours and use the ``django-seven`` ones:
+You can also use the ``django-seven`` ones and add yours:
 
 ::
 
@@ -80,6 +80,16 @@ You can also define yours and use the ``django-seven`` ones:
 
     from django_seven.deprecated_rules.rules import DEPRECATED_RULES as SV_DEPRECATED_RULES
     DEPRECATED_RULES = SV_DEPRECATED_RULES + CUSTOM_RULES
+
+
+You can specify through settings which directories/files you want to exclude from the deprecated rules search:
+
+::
+
+    SEVEN_EXCLUDED_DIRS = ['venv', '.git', 'frontend', 'static', 'docs']
+    SEVEN_EXCLUDED_SUB_PATHS = ['migrations']
+    SEVEN_EXCLUDED_SPECIFIC_FILE = ['my/specific/file.py']
+    SEVEN_EXCLUDED_FILE_EXTENSIONS = ['.pyc']
 
 
 [UNDER HEAVY DEVELOPMENT / DESIGN CHOICES]
