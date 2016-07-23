@@ -3,8 +3,7 @@ import os
 
 from django.core.management.base import BaseCommand
 
-from django_seven.deprecated_rules import rules
-from django_seven.deprecated_rules.helpers import is_excluded_dir, is_excluded_file, compile_regex
+from django_seven.deprecated_rules.helpers import is_excluded_dir, is_excluded_file
 from django_seven.deprecated_rules.new_helpers import validate_file, get_deprecated_rules
 
 
