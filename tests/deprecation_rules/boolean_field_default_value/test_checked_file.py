@@ -1,37 +1,15 @@
-import os
 
 from django.test import TestCase
-from django_seven.deprecated_rules.helpers import compile_regex
-from django_seven.deprecated_rules.new_helpers import validate_file
-
-
-RULES = [
-    {
-        'name': 'boolean_default',
-        'message': 'BooleanField message',
-        'regex': r'models\.BooleanField(?!(\(.*(default=)+.*\)))',
-        'number': '1601',
-    }
-]
-
-
-class RuleCheckMixin(object):
-
-    def assert_report(self, expected_report):
-        current_folder, _ = os.path.split(os.path.abspath(__file__))
-        filename = os.path.join(current_folder, 'checked_file.py')
-        abs_path = os.path.abspath('.')
-
-        regex_rules = compile_regex(RULES)
-        report = validate_file(filename, regex_rules, project_root=abs_path)
-
-        self.assertDictEqual(report, expected_report)
+from django.test.utils import override_settings
+from django_seven.deprecated_rules.rules import BOOLEAN_DEFAULT
+from tests.deprecation_rules.mixins import RuleCheckMixin
 
 
 class TestBooleanFieldDefaultRule(RuleCheckMixin, TestCase):
 
+    @override_settings(DEPRECATED_RULES=[BOOLEAN_DEFAULT])
     def test_validate_rule(self):
-        self.assert_report(
+        self.assert_report(__file__,
             {
                 'boolean_default': {
                     'lines': [
