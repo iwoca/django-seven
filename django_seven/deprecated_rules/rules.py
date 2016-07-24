@@ -67,7 +67,7 @@ DEPRECATED_REQUEST_RAW_POST_DATA = {
 DEPRECATED_UTILS_UNITTEST = {
     'name': 'deprecated_utils_unittest',
     'message': 'Deprecated django.utils.unittest module. Use unittest module instead.',
-    'regex': r'django\.utils\.unittest',
+    'regex': r'django\.utils.*unittest',
     'number': '1701',
     'should_be_fixed_in': '1.7',
 }
