@@ -83,7 +83,7 @@ DEPRECATED_MIMETYPE_HTTPRESPONSE_PARAMETER = {
 DEPRECATED_GET_QUERY_SET_FUNCTION = {
     'name': 'deprecated_get_query_set_function',
     'message': "Managers shouldn't define get_query_set function anymore but get_queryset.",
-    'regex': r'def get_query_set\(',
+    'regex': r'get_query_set',
     'number': '1801',
     'should_be_fixed_in': '1.8',
 }
