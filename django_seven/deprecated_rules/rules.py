@@ -51,7 +51,7 @@ DEPRECATED_DJANGO_LOCAL_FLAVOR_MODULE = {
 DEPRECATED_TRANSACTION_SYSTEM = {
     'name': 'deprecated_transaction_system',
     'message': 'Transaction management has been completely changed. atomic is replacing old commit_on_success and other utils.',
-    'regex': r'((@|with\s)transaction\.(commit_on_success|commit_manually))',
+    'regex': r'((@|with\s)(transaction\.){0,1}(commit_on_success|commit_manually))',
     'number': '1603',
     'should_be_fixed_in': '1.6',
 }
