@@ -5,7 +5,7 @@ from django_seven.deprecated_rules.rules import DEPRECATED_UTILS_UNITTEST
 from tests.deprecation_rules.mixins import RuleCheckMixin
 
 
-class TestDeprecatedDjangoSimpleJSonRule(RuleCheckMixin, TestCase):
+class TestDeprecatedUtilsUnittestRule(RuleCheckMixin, TestCase):
 
     @override_settings(DEPRECATED_RULES=[DEPRECATED_UTILS_UNITTEST])
     def test_validate_rule(self):

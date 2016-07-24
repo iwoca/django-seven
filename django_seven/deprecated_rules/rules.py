@@ -75,7 +75,7 @@ DEPRECATED_UTILS_UNITTEST = {
 DEPRECATED_MIMETYPE_HTTPRESPONSE_PARAMETER = {
     'name': 'deprecated_mimetype_httpresponse_parameter',
     'message': 'Deprecated mimetype parameter for HTTPResponse. Use content_type instead.',
-    'regex': r'mimetype\=',
+    'regex': r'HttpResponse\(.*mimetype\=.*\)',
     'number': '1702',
     'should_be_fixed_in': '1.7',
 }
