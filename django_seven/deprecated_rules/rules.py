@@ -43,7 +43,7 @@ BOOLEAN_DEFAULT = {
 DEPRECATED_DJANGO_LOCAL_FLAVOR_MODULE = {
     'name': 'deprecated_django_local_flavor_module',
     'message': 'Deprecated django.contrib.localflavor module (now third-party lib). Use localflavor instead.',
-    'regex': r'django\.contrib\.localflavor',
+    'regex': r'django\.contrib.*localflavor',
     'number': '1602',
     'should_be_fixed_in': '1.6',
 }
