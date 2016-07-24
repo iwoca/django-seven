@@ -18,7 +18,7 @@ DEPRECATED_GENERIC_FBV = {
 DEPRECATED_DJANGO_SIMPLEJSON = {
     'name': 'deprecated_django_simplejson',
     'message': 'Deprecated django.utils.simplejson. Use standard json library (has speedups from python 2.7',
-    'regex': r'django\.utils\.simplejson',
+    'regex': r'django\.utils.*simplejson',
     'number': '1503',
     'should_be_fixed_in': '1.5',
 }
