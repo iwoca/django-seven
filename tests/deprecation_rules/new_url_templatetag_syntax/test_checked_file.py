@@ -11,7 +11,7 @@ class TestNewURLTemplateTagSyntaxRule(RuleCheckMixin, TestCase):
     def test_validate_rule(self):
         self.assert_report(__file__,
             {
-                'new_url_templatetag_syntax': {
+                NEW_URL_TEMPLATETAG_SYNTAX['name']: {
                     'lines': [
                         {
                             'content': '<form action="{% url myview %}" method="POST">\n',

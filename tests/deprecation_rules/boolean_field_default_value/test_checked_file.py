@@ -11,7 +11,7 @@ class TestBooleanFieldDefaultRule(RuleCheckMixin, TestCase):
     def test_validate_rule(self):
         self.assert_report(__file__,
             {
-                'boolean_default': {
+                BOOLEAN_DEFAULT['name']: {
                     'lines': [
                         {
                             'content': '    bad_boolean_field = models.BooleanField()\n',
@@ -22,4 +22,3 @@ class TestBooleanFieldDefaultRule(RuleCheckMixin, TestCase):
                 }
             }
         )
-

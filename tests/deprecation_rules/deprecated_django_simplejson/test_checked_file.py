@@ -11,7 +11,7 @@ class TestDeprecatedDjangoSimpleJSonRule(RuleCheckMixin, TestCase):
     def test_validate_rule(self):
         self.assert_report(__file__,
             {
-                'deprecated_django_simplejson': {
+                DEPRECATED_DJANGO_SIMPLEJSON['name']: {
                     'lines': [
                         {
                             'content': 'from django.utils import simplejson\n',
