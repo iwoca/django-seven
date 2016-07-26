@@ -29,7 +29,15 @@ You should first add ``django_seven.deprecated_rules`` to your ``INSTALLED_APPS`
     ]
 
 
-Then launch the management command for your project:
+Then you should define your current Django version and the version you want to upgrade to in your settings file:
+
+::
+
+    SEVEN_CURRENT_DJANGO_VERSION = '1.4'
+    SEVEN_FUTURE_DJANGO_VERSION = '1.9'
+
+
+Then launch the ``check_deprecated_rules`` management command for your project:
 
 ::
 
@@ -46,6 +54,43 @@ This command will give you a list of non-respected rules, with useful informatio
 - The impacted file,
 - The rule number, with an explanation of the rule,
 - The line number, and the line copy.
+
+By default, ``django-seven`` is defining some deprecated rules, but you can also define yours in settings file.
+You should respect the rule fields:
+
+::
+
+    DEPRECATED_RULES = [
+        {
+            'name': 'deprecated_django_local_flavor_module',
+            'message': 'Deprecated django.contrib.localflavor module (now third-party lib). Use localflavor instead.',
+            'regex': r'.*django\.contrib\.localflavor.*',
+            'number': '1602',
+            'should_be_fixed_in': '1.6',
+        },
+    ]
+
+You can also use the ``django-seven`` ones and add yours:
+
+::
+
+    CUSTOM_RULES = [
+        # Your custom rules
+    ]
+
+    from django_seven.deprecated_rules.rules import DEPRECATED_RULES as SV_DEPRECATED_RULES
+    DEPRECATED_RULES = SV_DEPRECATED_RULES + CUSTOM_RULES
+
+
+You can specify through settings which directories/files you want to exclude from the deprecated rules search:
+
+::
+
+    SEVEN_EXCLUDED_DIRS = ['venv', '.git', 'frontend', 'static', 'docs']
+    SEVEN_EXCLUDED_SUB_PATHS = ['migrations']
+    SEVEN_EXCLUDED_SPECIFIC_FILE = ['my/specific/file.py']
+    SEVEN_EXCLUDED_FILE_EXTENSIONS = ['.pyc']
+
 
 [UNDER HEAVY DEVELOPMENT / DESIGN CHOICES]
 

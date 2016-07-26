@@ -3,9 +3,8 @@ import os
 
 from django.core.management.base import BaseCommand
 
-from django_seven.deprecated_rules import rules
-from django_seven.deprecated_rules.helpers import is_excluded_dir, is_excluded_file, compile_regex
-from django_seven.deprecated_rules.new_helpers import validate_file
+from django_seven.deprecated_rules.helpers import is_excluded_dir, is_excluded_file
+from django_seven.deprecated_rules.new_helpers import validate_file, get_deprecated_rules
 
 
 class Command(BaseCommand):
@@ -26,15 +25,18 @@ class Command(BaseCommand):
         L6:     boolean_field = models.BooleanField()
 
         """
-        print('Check deprecated rules...\n')
-        regex_rules = compile_regex(rules.REGEX_RULES)
+        print('-' * 50)
+        print('Checking these deprecated rules:')
 
-        for rule in sorted(rules.REGEX_RULES, key=lambda x: x['number']):
+        deprecated_rules = get_deprecated_rules()
+
+        for rule in deprecated_rules:
             print('{number}: {message}'.format(number=rule['number'], message=rule['message']))
 
         report = {}
 
         def progress_fn(filename, rule, line, number):
+            print('-' * 50)
             print(filename)
             print("{number}: {message}".format(number=rule['number'], message=rule['message']))
             print("L{line_number}: {line}".format(line_number=number, line=line))
@@ -42,7 +44,7 @@ class Command(BaseCommand):
         for dirName, subdirList, fileList in os.walk('.'):
             if not is_excluded_dir(dirName):
                 for fname in [f for f in fileList if not is_excluded_file(f, dirName)]:
-                    file_report = validate_file(os.path.join(dirName, fname), regex_rules, progress_fn)
+                    file_report = validate_file(os.path.join(dirName, fname), deprecated_rules, progress_fn)
                     report.update(file_report)
 
         if len(report) > 0:
