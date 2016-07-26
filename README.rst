@@ -33,8 +33,8 @@ Then you should define your current Django version and the version you want to u
 
 ::
 
-    CURRENT_DJANGO_VERSION = '1.4'
-    FUTURE_DJANGO_VERSION = '1.9'
+    SEVEN_CURRENT_DJANGO_VERSION = '1.4'
+    SEVEN_FUTURE_DJANGO_VERSION = '1.9'
 
 
 Then launch the ``check_deprecated_rules`` management command for your project:

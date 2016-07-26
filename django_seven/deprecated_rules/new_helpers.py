@@ -2,7 +2,7 @@ from collections import defaultdict
 
 from django.conf import settings
 
-from django_seven import CURRENT_DJANGO_VERSION, FUTURE_DJANGO_VERSION
+from django_seven import SEVEN_CURRENT_DJANGO_VERSION, SEVEN_FUTURE_DJANGO_VERSION
 from django_seven.compat.decorators import to_tuple
 from django_seven.deprecated_rules.helpers import compile_regex
 from django_seven.deprecated_rules.rules import DEPRECATED_RULES
@@ -34,7 +34,7 @@ def validate_file(filename, regex_rules, parse_progress=None, project_root=None)
 
 
 def is_relevant(rule):
-    return to_tuple(CURRENT_DJANGO_VERSION) < to_tuple(rule['should_be_fixed_in']) <= to_tuple(FUTURE_DJANGO_VERSION)
+    return to_tuple(SEVEN_CURRENT_DJANGO_VERSION) < to_tuple(rule['should_be_fixed_in']) <= to_tuple(SEVEN_FUTURE_DJANGO_VERSION)
 
 
 def get_deprecated_rules():
