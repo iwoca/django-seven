@@ -14,12 +14,12 @@ class TestDeprecatedGenericFBVRule(RuleCheckMixin, TestCase):
                 DEPRECATED_GENERIC_FBV['name']: {
                     'lines': [
                         {
-                            'content': "    url(r'^direct_url$'. direct_to_template('direct_template.html')),\n",
+                            'content': "    url(r'^direct_url$', direct_to_template('direct_template.html')),\n",
                             'number': 3,
                             'filename': '/tests/deprecation_rules/deprecated_generic_fbv/checked_file.py'
                         },
                         {
-                            'content': "    url(r'^redirect_url$'. redirect_to('redirect_template.html')),\n",
+                            'content': "    url(r'^redirect_url$', redirect_to('redirect_template.html')),\n",
                             'number': 4,
                             'filename': '/tests/deprecation_rules/deprecated_generic_fbv/checked_file.py'
                         }
