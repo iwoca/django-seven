@@ -33,8 +33,17 @@ A talk this year at DjangoUnderTheHood from Carl Meyer showed that Instagram use
 to upgrade their Django project.
 
 
-Current state
-=============
+The goal
+========
+The idea is to create a tool parsing a whole Django project to detect and fix anything useful to
+help on a Django upgrade.
+
+It would then depend on the nature of the fix.
+
+A first interesting step would be to identify all types of backward incompatibility in Django
+upgrades to define the possibly automated ones.
+
+
 
 
 
